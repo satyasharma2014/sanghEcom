@@ -1,0 +1,41 @@
+@base = https://localhost:7039
+
+
+### 1. Product banayein
+POST {{base}}/api/v1/products
+Content-Type: application/json
+
+{
+  "sku": "mug-001",
+  "name": "Coffee Mug",
+  "description": "350ml",
+  "price": 2500
+}
+
+### 2. Wahi SKU dobara (409 Conflict aana chahiye)
+POST {{base}}/api/v1/products
+Content-Type: application/json
+
+{
+  "sku": "mug-001",
+  "name": "Coffee Mug",
+  "description": "350ml",
+  "price": 2500
+}
+
+### 3. Product fetch karein
+GET {{base}}/api/v1/products/sku/MUG-001
+
+### 4. Galat price (400 Bad Request)
+POST {{base}}/api/v1/products
+Content-Type: application/json
+
+{
+  "sku": "bad-001",
+  "name": "Bad",
+  "description": "",
+  "price": 0
+}
+
+### 5. Missing product (404 Not Found)
+GET {{base}}/api/v1/products/sku/NOPE-999

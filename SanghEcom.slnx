@@ -20,8 +20,10 @@
   </Folder>
   <Folder Name="/src/Services/" />
   <Folder Name="/src/Services/Catalog/">
+    <Project Path="src/Services/Catalog/Catalog.Api/Catalog.Api.csproj" Id="e0954c24-a773-4fdf-bbf4-00a31b2eec20" />
     <Project Path="src/Services/Catalog/Catalog.Application/Catalog.Application.csproj" Id="7997a4b3-9651-41b3-adad-94f2bd2c9137" />
     <Project Path="src/Services/Catalog/Catalog.Domain/Catalog.Domain.csproj" Id="a73d4497-98d5-4994-ae5b-3b9843bfa8d6" />
+    <Project Path="src/Services/Catalog/Catalog.Infrastructure/Catalog.Infrastructure.csproj" Id="c0dc1791-26ec-4350-8174-575170b5f021" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/BuildingBlocks.Common.Tests/BuildingBlocks.Common.Tests.csproj" Id="1f51bd73-b087-4f18-8fe4-e65c35bc84ac" />
