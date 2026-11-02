@@ -1,0 +1,30 @@
+<Solution>
+  <Folder Name="/docs/" />
+  <Folder Name="/docs/adr/">
+    <File Path="docs/adr/ADR-001-microservices-database-per-service.md" />
+    <File Path="docs/adr/README.md" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".dockerignore" />
+    <File Path=".editorconfig" />
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/src/" />
+  <Folder Name="/src/BuildingBlocks/">
+    <Project Path="src/BuildingBlocks/BuildingBlocks.Common/BuildingBlocks.Common.csproj" Id="ffda804b-4d26-4137-b155-a4b59a65aca2" />
+  </Folder>
+  <Folder Name="/src/Services/" />
+  <Folder Name="/src/Services/Catalog/">
+    <Project Path="src/Services/Catalog/Catalog.Application/Catalog.Application.csproj" Id="7997a4b3-9651-41b3-adad-94f2bd2c9137" />
+    <Project Path="src/Services/Catalog/Catalog.Domain/Catalog.Domain.csproj" Id="a73d4497-98d5-4994-ae5b-3b9843bfa8d6" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/BuildingBlocks.Common.Tests/BuildingBlocks.Common.Tests.csproj" Id="1f51bd73-b087-4f18-8fe4-e65c35bc84ac" />
+    <Project Path="tests/Catalog/Catalog.Application.Tests/Catalog.Application.Tests.csproj" Id="39eaa034-8560-40a0-b998-74f1a89851df" />
+  </Folder>
+</Solution>
