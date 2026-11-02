@@ -24,9 +24,9 @@ public sealed class ProductsController(ProductService service) : ControllerBase
 
     // GET api/v1/products/sku/MUG-001
     [HttpGet("sku/{sku}")]
-    public async Task<IActionResult> GetBySku(string sku, CancellationToken ct)
+    public async Task<IActionResult> GetBySku(string sku, ProductQueryService query, CancellationToken ct)
     {
-        var result = await service.GetBySkuAsync(sku, ct);
+        var result = await query.GetBySkuAsync(sku.Trim().ToUpperInvariant(), ct);
 
         return result.IsFailure
             ? ToProblem(result.Error)

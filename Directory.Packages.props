@@ -6,6 +6,7 @@
   <ItemGroup>
     <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="10.0.14" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.Caching.Abstractions" Version="10.0.14" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
     <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
     <PackageVersion Include="Swashbuckle.AspNetCore.Swagger" Version="10.3.1" />
@@ -14,5 +15,7 @@
     <PackageVersion Include="xunit.v3" Version="4.0.2" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="4.0.1" />
     <packageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.14" />
+    <packageVersion Include="Microsoft.Extensions.Caching.Memory" Version="10.0.14" />
+    
   </ItemGroup>
 </Project>

@@ -21,6 +21,8 @@ builder.Services.AddCatalogInfrastructure(
     builder.Configuration.GetConnectionString("CatalogDb")!);
 // Application service
 builder.Services.AddScoped<ProductService>();
+builder.Services.AddMemoryCache();
+builder.Services.AddScoped<ProductQueryService>();
 
 var app = builder.Build();
 
