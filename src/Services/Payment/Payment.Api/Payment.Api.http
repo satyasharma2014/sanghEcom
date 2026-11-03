@@ -1,0 +1,35 @@
+# @Payment.Api_HostAddress = http://localhost:5026
+
+# GET {{Payment.Api_HostAddress}}/weatherforecast/
+# Accept: application/json
+
+###
+@base = https://localhost:7225
+@orderId = aaaaaaaa-0000-0000-0000-000000000001
+
+### 1. Charge (200, Captured)
+POST {{base}}/api/v1/payments
+Content-Type: application/json
+
+{ "orderId": "{{orderId}}", "amount": 5000 }
+
+### 2. Same charge dobara (200, same paymentId)
+POST {{base}}/api/v1/payments
+Content-Type: application/json
+
+{ "orderId": "{{orderId}}", "amount": 5000 }
+
+### 3. Decline (402)
+POST {{base}}/api/v1/payments
+Content-Type: application/json
+
+{ "orderId": "bbbbbbbb-0000-0000-0000-000000000002", "amount": 60000 }
+
+### 4. Refund (200, Refunded)
+POST {{base}}/api/v1/payments/orders/{{orderId}}/refund
+
+### 5. Refund dobara (200, abhi bhi Refunded)
+POST {{base}}/api/v1/payments/orders/{{orderId}}/refund
+
+### 6. Missing refund (404)
+POST {{base}}/api/v1/payments/orders/cccccccc-0000-0000-0000-000000000003/refund

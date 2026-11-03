@@ -25,8 +25,26 @@
     <Project Path="src/Services/Catalog/Catalog.Domain/Catalog.Domain.csproj" Id="a73d4497-98d5-4994-ae5b-3b9843bfa8d6" />
     <Project Path="src/Services/Catalog/Catalog.Infrastructure/Catalog.Infrastructure.csproj" Id="c0dc1791-26ec-4350-8174-575170b5f021" />
   </Folder>
+  <Folder Name="/src/Services/Inventory/">
+    <Project Path="src/Services/Inventory/Inventory.Api/Inventory.Api.csproj" Id="6468d751-3ccd-4018-9105-96782eb108f8" />
+    <Project Path="src/Services/Inventory/Inventory.Application/Inventory.Application.csproj" Id="e5fbdd76-fbd6-4bcc-8253-cc89e2e9ad8a" />
+    <Project Path="src/Services/Inventory/Inventory.Domain/Inventory.Domain.csproj" Id="4249edd5-44e3-4092-b8cd-5a5df46142b0" />
+    <Project Path="src/Services/Inventory/Inventory.Infrastructure/Inventory.Infrastructure.csproj" Id="51e0b1e9-56ed-44f9-b790-825bb99fe364" />
+  </Folder>
+  <Folder Name="/src/Services/Payment/">
+    <Project Path="src/Services/Payment/Payment.Api/Payment.Api.csproj" Id="7f66f08d-78d6-4ecd-b2ed-62f8dc46b3b3" />
+    <Project Path="src/Services/Payment/Payment.Application/Payment.Application.csproj" Id="c3572ef7-ccfb-45b0-a26a-f534f4a70ff1" />
+    <Project Path="src/Services/Payment/Payment.Domain/Payment.Domain.csproj" Id="737a21f9-b62c-41eb-970c-30754c54465a" />
+    <Project Path="src/Services/Payment/Payment.Infrastructure/Payment.Infrastructure.csproj" Id="fe7bfca7-7d1c-4939-9de0-89845a69cc25" />
+  </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/BuildingBlocks.Common.Tests/BuildingBlocks.Common.Tests.csproj" Id="1f51bd73-b087-4f18-8fe4-e65c35bc84ac" />
     <Project Path="tests/Catalog/Catalog.Application.Tests/Catalog.Application.Tests.csproj" Id="39eaa034-8560-40a0-b998-74f1a89851df" />
+  </Folder>
+  <Folder Name="/tests/Inventory/">
+    <Project Path="tests/Inventory.Application.Tests/Inventory.Application.Tests.csproj" Id="761b40f1-b335-4907-8065-21bdcddc8903" />
+  </Folder>
+  <Folder Name="/tests/Payment/">
+    <Project Path="tests/Payment/Payment.Application.Tests/Payment.Application.Tests.csproj" Id="554a77a7-c944-45ae-b43e-22761aebf080" />
   </Folder>
 </Solution>

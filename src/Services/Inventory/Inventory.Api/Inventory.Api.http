@@ -1,0 +1,45 @@
+###
+@base = https://localhost:7130
+@orderId = 11111111-1111-1111-1111-111111111111
+
+### 1. Stock dekhein (200, quantity 5)
+GET {{base}}/api/v1/inventory/PHONE-001
+
+### 2. Reserve karein 2 (200)
+POST {{base}}/api/v1/inventory/reservations
+Content-Type: application/json
+
+{
+  "orderId": "{{orderId}}",
+  "items": [ { "sku": "PHONE-001", "quantity": 2 } ]
+}
+
+### 3. Stock dekhein (quantity 3)
+GET {{base}}/api/v1/inventory/PHONE-001
+
+### 4. Same reserve dobara (idempotent, quantity abhi bhi 3)
+POST {{base}}/api/v1/inventory/reservations
+Content-Type: application/json
+
+{
+  "orderId": "{{orderId}}",
+  "items": [ { "sku": "PHONE-001", "quantity": 2 } ]
+}
+
+### 5. Stock check (quantity 3)
+GET {{base}}/api/v1/inventory/PHONE-001
+
+### 6. Release karein (200)
+POST {{base}}/api/v1/inventory/reservations/{{orderId}}/release
+
+### 7. Stock check (quantity 5)
+GET {{base}}/api/v1/inventory/PHONE-001
+
+### 8. Insufficient stock (409)
+POST {{base}}/api/v1/inventory/reservations
+Content-Type: application/json
+
+{
+  "orderId": "22222222-2222-2222-2222-222222222222",
+  "items": [ { "sku": "PHONE-001", "quantity": 99 } ]
+}
