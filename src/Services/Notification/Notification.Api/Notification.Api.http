@@ -1,0 +1,16 @@
+@base = http://localhost:5183
+
+### Health
+GET {{base}}/health
+
+### TEST A: Outbox mein event save (202)
+POST {{base}}/dev/outbox-order-placed
+
+### TEST C: RabbitMQ band hone par bhi (202)
+POST {{base}}/dev/outbox-order-placed
+
+### Outbox status
+GET {{base}}/dev/outbox
+
+### Notification records (email kiske liye gaya)
+GET {{base}}/dev/notifications

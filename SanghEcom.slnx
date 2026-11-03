@@ -17,6 +17,9 @@
   <Folder Name="/src/" />
   <Folder Name="/src/BuildingBlocks/">
     <Project Path="src/BuildingBlocks/BuildingBlocks.Common/BuildingBlocks.Common.csproj" Id="ffda804b-4d26-4137-b155-a4b59a65aca2" />
+    <Project Path="src/BuildingBlocks/BuildingBlocks.Contracts/BuildingBlocks.Contracts.csproj" Id="f8761a5a-a517-4b23-ab85-8a3f05612685" />
+    <Project Path="src/BuildingBlocks/BuildingBlocks.Messaging/BuildingBlocks.Messaging.csproj" Id="ee2979ad-3509-4a0b-8813-c036fe4c46c5" />
+    <Project Path="src/BuildingBlocks/BuildingBlocks.Outbox/BuildingBlocks.Outbox.csproj" Id="4d75dcd0-d0a6-4c7a-abf8-9ba2ca759c66" />
     <Project Path="src/BuildingBlocks/BuildingBlocks.Resilience/BuildingBlocks.Resilience.csproj" Id="d16731d0-a72e-4b01-b841-588e892f38e4" />
   </Folder>
   <Folder Name="/src/Services/" />
@@ -31,6 +34,9 @@
     <Project Path="src/Services/Inventory/Inventory.Application/Inventory.Application.csproj" Id="e5fbdd76-fbd6-4bcc-8253-cc89e2e9ad8a" />
     <Project Path="src/Services/Inventory/Inventory.Domain/Inventory.Domain.csproj" Id="4249edd5-44e3-4092-b8cd-5a5df46142b0" />
     <Project Path="src/Services/Inventory/Inventory.Infrastructure/Inventory.Infrastructure.csproj" Id="51e0b1e9-56ed-44f9-b790-825bb99fe364" />
+  </Folder>
+  <Folder Name="/src/Services/Notification/">
+    <Project Path="src/Services/Notification/Notification.Api/Notification.Api.csproj" Id="39b13ca1-ff71-4698-a877-335ecd33cc1e" />
   </Folder>
   <Folder Name="/src/Services/Payment/">
     <Project Path="src/Services/Payment/Payment.Api/Payment.Api.csproj" Id="7f66f08d-78d6-4ecd-b2ed-62f8dc46b3b3" />
