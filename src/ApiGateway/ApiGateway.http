@@ -1,0 +1,26 @@
+# @ApiGateway_HostAddress = http://localhost:5087
+
+# GET {{ApiGateway_HostAddress}}/weatherforecast/
+# Accept: application/json
+
+# ###
+@base = http://localhost:5000
+
+### Health
+GET {{base}}/health
+
+### 1. Catalog product (gateway ke through, 200)
+GET {{base}}/api/v1/products/sku/MUG-001
+
+### 2. Orders (gateway ke through, 200 ya 404)
+GET {{base}}/api/v1/orders/dddddddd-0000-0000-0000-000000000001
+
+### 3. Inventory route nahi hai (404)
+GET {{base}}/api/v1/inventory/MUG-001
+
+### 4. Payment route nahi hai (404)
+GET {{base}}/api/v1/payments/orders/dddddddd-0000-0000-0000-000000000001
+
+### 5. Correlation ID (response header mein wahi ID)
+GET {{base}}/health
+X-Correlation-Id: my-test-123

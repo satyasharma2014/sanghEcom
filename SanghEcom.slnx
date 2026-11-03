@@ -15,6 +15,9 @@
     <File Path="README.md" />
   </Folder>
   <Folder Name="/src/" />
+  <Folder Name="/src/ApiGateway/">
+    <Project Path="src/ApiGateway/ApiGateway.csproj" Id="7c639424-455d-4655-b2e7-96598df0de0d" />
+  </Folder>
   <Folder Name="/src/BuildingBlocks/">
     <Project Path="src/BuildingBlocks/BuildingBlocks.Common/BuildingBlocks.Common.csproj" Id="ffda804b-4d26-4137-b155-a4b59a65aca2" />
     <Project Path="src/BuildingBlocks/BuildingBlocks.Contracts/BuildingBlocks.Contracts.csproj" Id="f8761a5a-a517-4b23-ab85-8a3f05612685" />
@@ -38,6 +41,12 @@
   <Folder Name="/src/Services/Notification/">
     <Project Path="src/Services/Notification/Notification.Api/Notification.Api.csproj" Id="39b13ca1-ff71-4698-a877-335ecd33cc1e" />
   </Folder>
+  <Folder Name="/src/Services/Orders/">
+    <Project Path="src/Services/Orders/Orders.Api/Orders.Api.csproj" Id="398ad872-afa7-4898-903e-d38157f8f33b" />
+    <Project Path="src/Services/Orders/Orders.Application/Orders.Application.csproj" Id="b40b3798-1379-41f3-a8b0-fa21b500a193" />
+    <Project Path="src/Services/Orders/Orders.Domain/Orders.Domain.csproj" Id="eb8f36e3-d731-4958-9d19-8f66af4e116b" />
+    <Project Path="src/Services/Orders/Orders.Infrastructure/Orders.Infrastructure.csproj" Id="4cf632aa-e6da-41ea-91ce-c354be265662" />
+  </Folder>
   <Folder Name="/src/Services/Payment/">
     <Project Path="src/Services/Payment/Payment.Api/Payment.Api.csproj" Id="7f66f08d-78d6-4ecd-b2ed-62f8dc46b3b3" />
     <Project Path="src/Services/Payment/Payment.Application/Payment.Application.csproj" Id="c3572ef7-ccfb-45b0-a26a-f534f4a70ff1" />
@@ -47,10 +56,15 @@
   <Folder Name="/tests/">
     <Project Path="tests/BuildingBlocks.Common.Tests/BuildingBlocks.Common.Tests.csproj" Id="1f51bd73-b087-4f18-8fe4-e65c35bc84ac" />
     <Project Path="tests/BuildingBlocks/BuildingBlocks.Resilience.Tests/BuildingBlocks.Resilience.Tests.csproj" Id="bd42ac7c-0391-40d9-8dde-a49c4c16ade9" />
+  </Folder>
+  <Folder Name="/tests/Catalog/">
     <Project Path="tests/Catalog/Catalog.Application.Tests/Catalog.Application.Tests.csproj" Id="39eaa034-8560-40a0-b998-74f1a89851df" />
   </Folder>
   <Folder Name="/tests/Inventory/">
     <Project Path="tests/Inventory.Application.Tests/Inventory.Application.Tests.csproj" Id="761b40f1-b335-4907-8065-21bdcddc8903" />
+  </Folder>
+  <Folder Name="/tests/Orders/">
+    <Project Path="tests/Orders/Orders.Application.Tests/Orders.Application.Tests.csproj" Id="8ee09c80-4998-45c3-bd49-09b98faebf41" />
   </Folder>
   <Folder Name="/tests/Payment/">
     <Project Path="tests/Payment/Payment.Application.Tests/Payment.Application.Tests.csproj" Id="554a77a7-c944-45ae-b43e-22761aebf080" />

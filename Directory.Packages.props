@@ -22,5 +22,6 @@
     <packageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.14" />
     <packageVersion Include="Microsoft.Extensions.Caching.Memory" Version="10.0.14" />
     <PackageVersion Include="xunit.v3.common" Version="4.0.2" />
+    <PackageVersion Include="Yarp.ReverseProxy" Version="2.3.0" />
   </ItemGroup>
 </Project>

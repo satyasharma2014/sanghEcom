@@ -1,0 +1,54 @@
+@base = http://localhost:5005
+
+### Health
+GET {{base}}/health
+
+### 1. Order place karein (200)
+POST {{base}}/api/v1/orders
+Content-Type: application/json
+
+{
+  "orderId": "aaaaaaaa-0000-0000-0000-000000000001",
+  "customerEmail": "asha@example.com",
+  "lines": [
+    { "sku": "MUG-001", "quantity": 2, "unitPrice": 2500 }
+  ]
+}
+
+### 2. Same order dobara (200, naya order nahi banega)
+POST {{base}}/api/v1/orders
+Content-Type: application/json
+
+{
+  "orderId": "aaaaaaaa-0000-0000-0000-000000000001",
+  "customerEmail": "asha@example.com",
+  "lines": [
+    { "sku": "MUG-001", "quantity": 2, "unitPrice": 2500 }
+  ]
+}
+### 3. Expected: 200, status: Confirmed, totalAmount: 5000 (client ka unitPrice: 1 ignore hona chahiye).
+
+POST {{base}}/api/v1/orders
+Content-Type: application/json
+
+{
+  "orderId": "dddddddd-0000-0000-0000-000000000001",
+  "customerEmail": "saga@example.com",
+  "lines": [ { "sku": "MUG-001", "quantity": 2, "unitPrice": 1 } ]
+}
+
+### 4. Order fetch karein (200)
+GET {{base}}/api/v1/orders/aaaaaaaa-0000-0000-0000-000000000001
+
+### 5. Galat email (400)
+POST {{base}}/api/v1/orders
+Content-Type: application/json
+
+{
+  "orderId": "aaaaaaaa-0000-0000-0000-000000000002",
+  "customerEmail": "",
+  "lines": []
+}
+
+### 6. Order nahi mila (404)
+GET {{base}}/api/v1/orders/bbbbbbbb-0000-0000-0000-000000000009
