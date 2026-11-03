@@ -17,6 +17,7 @@
   <Folder Name="/src/" />
   <Folder Name="/src/BuildingBlocks/">
     <Project Path="src/BuildingBlocks/BuildingBlocks.Common/BuildingBlocks.Common.csproj" Id="ffda804b-4d26-4137-b155-a4b59a65aca2" />
+    <Project Path="src/BuildingBlocks/BuildingBlocks.Resilience/BuildingBlocks.Resilience.csproj" Id="d16731d0-a72e-4b01-b841-588e892f38e4" />
   </Folder>
   <Folder Name="/src/Services/" />
   <Folder Name="/src/Services/Catalog/">
@@ -39,6 +40,7 @@
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/BuildingBlocks.Common.Tests/BuildingBlocks.Common.Tests.csproj" Id="1f51bd73-b087-4f18-8fe4-e65c35bc84ac" />
+    <Project Path="tests/BuildingBlocks/BuildingBlocks.Resilience.Tests/BuildingBlocks.Resilience.Tests.csproj" Id="bd42ac7c-0391-40d9-8dde-a49c4c16ade9" />
     <Project Path="tests/Catalog/Catalog.Application.Tests/Catalog.Application.Tests.csproj" Id="39eaa034-8560-40a0-b998-74f1a89851df" />
   </Folder>
   <Folder Name="/tests/Inventory/">
