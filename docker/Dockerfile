@@ -15,25 +15,20 @@ ARG DOTNET_VERSION=10.0
 FROM mcr.microsoft.com/dotnet/sdk:${DOTNET_VERSION} AS build
 WORKDIR /src
 
-# Build ke liye zaroori root files:
-#   global.json            -> SDK version lock
-#   Directory.Build.props  -> common settings (net10.0, nullable, analyzers)
-#   Directory.Packages.props -> NuGet versions (Central Package Management)
+# Build ke liye zaroori root files (layer cache ke liye pehle copy)
 COPY global.json Directory.Build.props Directory.Packages.props ./
 
-# Saari services aur BuildingBlocks ka source.
-# Note: pehle wale "csproj-only restore" se simple, aur cache ka trade-off hai (neeche note).
+# Saari services aur BuildingBlocks ka source
 COPY src/ src/
 
-# Build args (compose se aate hain)
 ARG PROJECT
 
-# Restore: NuGet packages download (container ke andar)
+# Restore: NuGet packages download
 RUN dotnet restore "$PROJECT"
 
-# Publish: Release build + output /app/publish
-#   --no-restore : upar restore ho chuka hai, dobara nahi
-#   UseAppHost=false : .exe nahi, sirf .dll (image chhoti)
+# Publish: Release build, output /app/publish
+#   --no-restore      : upar restore ho chuka hai
+#   UseAppHost=false  : sirf .dll (image chhoti)
 RUN dotnet publish "$PROJECT" -c Release -o /app/publish --no-restore /p:UseAppHost=false
 
 # ----------------------------------------------------------------------------
@@ -43,7 +38,15 @@ RUN dotnet publish "$PROJECT" -c Release -o /app/publish --no-restore /p:UseAppH
 FROM mcr.microsoft.com/dotnet/aspnet:${DOTNET_VERSION} AS final
 WORKDIR /app
 
-# Build args ko runtime stage mein dobara declare karna zaroori hai
+# OS security patches: base image ke apt packages ko latest fixed version par laao
+# (Trivy HIGH CVE-2026-109518 jaise fixed issues ke liye).
+# Ye root user se chalta hai, isliye USER root, phir wapas non-root.
+USER root
+RUN apt-get update \
+ && apt-get upgrade -y --no-install-recommends \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
+
 ARG ASSEMBLY
 ENV APP_DLL=${ASSEMBLY}.dll
 
@@ -54,9 +57,8 @@ EXPOSE 8080
 # Build stage ka output copy
 COPY --from=build /app/publish .
 
-# Security: root ki jagah built-in non-root user (uid 1654). aspnet image mein APP_UID set hota hai.
+# Security: non-root user (uid 1654, aspnet image mein APP_UID set hota hai)
 USER $APP_UID
 
-# exec form ke bina Ctrl+C / docker stop sahi se kaam nahi karte.
-# "exec" se dotnet hi PID 1 banta hai.
+# exec form: dotnet PID 1 banta hai, docker stop / Ctrl+C sahi chalte hain
 ENTRYPOINT ["sh", "-c", "exec dotnet $APP_DLL"]
