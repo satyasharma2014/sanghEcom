@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="731a3ff1-b8ef-4691-957b-b324c67799af" name="satya@LAPTOP-VHJT9OJ5 2026-11-07 06:33:23.3589995" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-07T06:33:21.8461726Z" queuing="2026-11-07T06:33:21.8461726Z" start="2026-11-07T06:33:21.8461726Z" finish="2026-11-07T06:33:23.3594545Z" />
+  <TestSettings name="default" id="f1bb9cd6-3c73-466b-8597-5c66b06f0dd4">
+    <Deployment runDeploymentRoot="satya_LAPTOP-VHJT9OJ5_2026-11-07_06_33_23.3589995" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="e1dfac81-5fd0-41bb-b5c9-86fc1927c0f0" testId="414c4a7a-7701-a4c7-d6f7-e3c72ecdf0cc" testName="BuildingBlocks.Resilience.Tests.UnitTest1.Test1" computerName="LAPTOP-VHJT9OJ5" duration="00:00:00.0110000" startTime="2026-11-07T06:33:22.0586963+00:00" endTime="2026-11-07T06:33:22.0835050+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="e1dfac81-5fd0-41bb-b5c9-86fc1927c0f0" />
+    <UnitTestResult executionId="c75ec636-eb6c-49d1-b208-c1bf1ead87d5" testId="358af5f9-d6d4-d2dd-90b4-654324c2711f" testName="BuildingBlocks.Resilience.Tests.ResilienceTests.CircuitBreaker_OpensAfterRepeatedFailures" computerName="LAPTOP-VHJT9OJ5" duration="00:00:00.1750000" startTime="2026-11-07T06:33:22.0586994+00:00" endTime="2026-11-07T06:33:22.2425275+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="c75ec636-eb6c-49d1-b208-c1bf1ead87d5" />
+    <UnitTestResult executionId="e8d2f561-f1ba-4587-b82f-4a7dddb5dc1d" testId="11af9d40-b9b1-866c-c934-5236b7732644" testName="BuildingBlocks.Resilience.Tests.ResilienceTests.Timeout_SlowAttempt_Throws" computerName="LAPTOP-VHJT9OJ5" duration="00:00:01.0370000" startTime="2026-11-07T06:33:22.2434112+00:00" endTime="2026-11-07T06:33:23.2824252+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="e8d2f561-f1ba-4587-b82f-4a7dddb5dc1d" />
+    <UnitTestResult executionId="7e7f0b7c-a704-4b99-8884-cbd7fffbf487" testId="81e893e4-d008-32fc-6111-074f5bf3c9db" testName="BuildingBlocks.Resilience.Tests.ResilienceTests.Retry_TransientFailure_ThenSuccess_ReturnsOk" computerName="LAPTOP-VHJT9OJ5" duration="00:00:00.0260000" startTime="2026-11-07T06:33:23.2867336+00:00" endTime="2026-11-07T06:33:23.3130520+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="7e7f0b7c-a704-4b99-8884-cbd7fffbf487" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="BuildingBlocks.Resilience.Tests.UnitTest1.Test1" storage="c:\users\satya\source\sanghecom\tests\buildingblocks\buildingblocks.resilience.tests\bin\release\net10.0\buildingblocks.resilience.tests.dll" id="414c4a7a-7701-a4c7-d6f7-e3c72ecdf0cc">
+      <Execution id="e1dfac81-5fd0-41bb-b5c9-86fc1927c0f0" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\BuildingBlocks\BuildingBlocks.Resilience.Tests\bin\Release\net10.0\BuildingBlocks.Resilience.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="BuildingBlocks.Resilience.Tests.UnitTest1" name="Test1" />
+    </UnitTest>
+    <UnitTest name="BuildingBlocks.Resilience.Tests.ResilienceTests.CircuitBreaker_OpensAfterRepeatedFailures" storage="c:\users\satya\source\sanghecom\tests\buildingblocks\buildingblocks.resilience.tests\bin\release\net10.0\buildingblocks.resilience.tests.dll" id="358af5f9-d6d4-d2dd-90b4-654324c2711f">
+      <Execution id="c75ec636-eb6c-49d1-b208-c1bf1ead87d5" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\BuildingBlocks\BuildingBlocks.Resilience.Tests\bin\Release\net10.0\BuildingBlocks.Resilience.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="BuildingBlocks.Resilience.Tests.ResilienceTests" name="CircuitBreaker_OpensAfterRepeatedFailures" />
+    </UnitTest>
+    <UnitTest name="BuildingBlocks.Resilience.Tests.ResilienceTests.Timeout_SlowAttempt_Throws" storage="c:\users\satya\source\sanghecom\tests\buildingblocks\buildingblocks.resilience.tests\bin\release\net10.0\buildingblocks.resilience.tests.dll" id="11af9d40-b9b1-866c-c934-5236b7732644">
+      <Execution id="e8d2f561-f1ba-4587-b82f-4a7dddb5dc1d" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\BuildingBlocks\BuildingBlocks.Resilience.Tests\bin\Release\net10.0\BuildingBlocks.Resilience.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="BuildingBlocks.Resilience.Tests.ResilienceTests" name="Timeout_SlowAttempt_Throws" />
+    </UnitTest>
+    <UnitTest name="BuildingBlocks.Resilience.Tests.ResilienceTests.Retry_TransientFailure_ThenSuccess_ReturnsOk" storage="c:\users\satya\source\sanghecom\tests\buildingblocks\buildingblocks.resilience.tests\bin\release\net10.0\buildingblocks.resilience.tests.dll" id="81e893e4-d008-32fc-6111-074f5bf3c9db">
+      <Execution id="7e7f0b7c-a704-4b99-8884-cbd7fffbf487" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\BuildingBlocks\BuildingBlocks.Resilience.Tests\bin\Release\net10.0\BuildingBlocks.Resilience.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="BuildingBlocks.Resilience.Tests.ResilienceTests" name="Retry_TransientFailure_ThenSuccess_ReturnsOk" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="414c4a7a-7701-a4c7-d6f7-e3c72ecdf0cc" executionId="e1dfac81-5fd0-41bb-b5c9-86fc1927c0f0" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestEntry testId="358af5f9-d6d4-d2dd-90b4-654324c2711f" executionId="c75ec636-eb6c-49d1-b208-c1bf1ead87d5" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestEntry testId="11af9d40-b9b1-866c-c934-5236b7732644" executionId="e8d2f561-f1ba-4587-b82f-4a7dddb5dc1d" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestEntry testId="81e893e4-d008-32fc-6111-074f5bf3c9db" executionId="7e7f0b7c-a704-4b99-8884-cbd7fffbf487" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="4" executed="4" passed="4" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+</TestRun>

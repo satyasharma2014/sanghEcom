@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="59f95ab8-ebea-45c7-8525-1b05c5374fc5" name="satya@LAPTOP-VHJT9OJ5 2026-11-07 06:33:22.3330619" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-07T06:33:21.9922356Z" queuing="2026-11-07T06:33:21.9922356Z" start="2026-11-07T06:33:21.9922356Z" finish="2026-11-07T06:33:22.3334897Z" />
+  <TestSettings name="default" id="35b0937f-c431-4303-b659-c4aca5d1a216">
+    <Deployment runDeploymentRoot="satya_LAPTOP-VHJT9OJ5_2026-11-07_06_33_22.3330619" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="c290437e-f192-4866-a606-89337e237db9" testId="2be7f379-31cc-b337-c00a-b562a0f79929" testName="BuildingBlocks.Common.Tests.ResultTests.GenericFailure_AccessingValue_Throws" computerName="LAPTOP-VHJT9OJ5" duration="00:00:00.0200000" startTime="2026-11-07T06:33:22.2324876+00:00" endTime="2026-11-07T06:33:22.2671745+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="c290437e-f192-4866-a606-89337e237db9" />
+    <UnitTestResult executionId="08342f05-f4a6-434b-9f21-a0eff70ab450" testId="ec71ceaf-dd45-fdfc-72f0-f0361190de9c" testName="BuildingBlocks.Common.Tests.ResultTests.Success_ISSuccess_IsTrue" computerName="LAPTOP-VHJT9OJ5" duration="00:00:00.0000000" startTime="2026-11-07T06:33:22.2734665+00:00" endTime="2026-11-07T06:33:22.2746969+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="08342f05-f4a6-434b-9f21-a0eff70ab450" />
+    <UnitTestResult executionId="b9d674d0-87a6-4786-be28-a6d83f5dc5d6" testId="14742406-8aea-5e9e-3c03-241fe102ac14" testName="BuildingBlocks.Common.Tests.ResultTests.Failure_HasError" computerName="LAPTOP-VHJT9OJ5" duration="00:00:00.0000000" startTime="2026-11-07T06:33:22.2748968+00:00" endTime="2026-11-07T06:33:22.2758666+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="b9d674d0-87a6-4786-be28-a6d83f5dc5d6" />
+    <UnitTestResult executionId="4d7bbad5-fe3b-4c2d-8854-9b06691c6c5d" testId="8affa260-e7b9-9d42-48a1-d19b43bcc7a2" testName="BuildingBlocks.Common.Tests.ResultTests.GenericSuccess_ReturnsValue" computerName="LAPTOP-VHJT9OJ5" duration="00:00:00.0030000" startTime="2026-11-07T06:33:22.2760406+00:00" endTime="2026-11-07T06:33:22.2792555+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="4d7bbad5-fe3b-4c2d-8854-9b06691c6c5d" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="BuildingBlocks.Common.Tests.ResultTests.GenericFailure_AccessingValue_Throws" storage="c:\users\satya\source\sanghecom\tests\buildingblocks.common.tests\bin\release\net10.0\buildingblocks.common.tests.dll" id="2be7f379-31cc-b337-c00a-b562a0f79929">
+      <Execution id="c290437e-f192-4866-a606-89337e237db9" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\BuildingBlocks.Common.Tests\bin\Release\net10.0\BuildingBlocks.Common.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="BuildingBlocks.Common.Tests.ResultTests" name="GenericFailure_AccessingValue_Throws" />
+    </UnitTest>
+    <UnitTest name="BuildingBlocks.Common.Tests.ResultTests.Success_ISSuccess_IsTrue" storage="c:\users\satya\source\sanghecom\tests\buildingblocks.common.tests\bin\release\net10.0\buildingblocks.common.tests.dll" id="ec71ceaf-dd45-fdfc-72f0-f0361190de9c">
+      <Execution id="08342f05-f4a6-434b-9f21-a0eff70ab450" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\BuildingBlocks.Common.Tests\bin\Release\net10.0\BuildingBlocks.Common.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="BuildingBlocks.Common.Tests.ResultTests" name="Success_ISSuccess_IsTrue" />
+    </UnitTest>
+    <UnitTest name="BuildingBlocks.Common.Tests.ResultTests.Failure_HasError" storage="c:\users\satya\source\sanghecom\tests\buildingblocks.common.tests\bin\release\net10.0\buildingblocks.common.tests.dll" id="14742406-8aea-5e9e-3c03-241fe102ac14">
+      <Execution id="b9d674d0-87a6-4786-be28-a6d83f5dc5d6" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\BuildingBlocks.Common.Tests\bin\Release\net10.0\BuildingBlocks.Common.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="BuildingBlocks.Common.Tests.ResultTests" name="Failure_HasError" />
+    </UnitTest>
+    <UnitTest name="BuildingBlocks.Common.Tests.ResultTests.GenericSuccess_ReturnsValue" storage="c:\users\satya\source\sanghecom\tests\buildingblocks.common.tests\bin\release\net10.0\buildingblocks.common.tests.dll" id="8affa260-e7b9-9d42-48a1-d19b43bcc7a2">
+      <Execution id="4d7bbad5-fe3b-4c2d-8854-9b06691c6c5d" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\BuildingBlocks.Common.Tests\bin\Release\net10.0\BuildingBlocks.Common.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="BuildingBlocks.Common.Tests.ResultTests" name="GenericSuccess_ReturnsValue" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="2be7f379-31cc-b337-c00a-b562a0f79929" executionId="c290437e-f192-4866-a606-89337e237db9" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestEntry testId="ec71ceaf-dd45-fdfc-72f0-f0361190de9c" executionId="08342f05-f4a6-434b-9f21-a0eff70ab450" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestEntry testId="14742406-8aea-5e9e-3c03-241fe102ac14" executionId="b9d674d0-87a6-4786-be28-a6d83f5dc5d6" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestEntry testId="8affa260-e7b9-9d42-48a1-d19b43bcc7a2" executionId="4d7bbad5-fe3b-4c2d-8854-9b06691c6c5d" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="4" executed="4" passed="4" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+</TestRun>

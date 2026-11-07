@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="f9730177-38b2-4b8e-a25e-9bf9b5364489" name="satya@LAPTOP-VHJT9OJ5 2026-11-07 06:33:22.2114964" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-07T06:33:21.9095124Z" queuing="2026-11-07T06:33:21.9095124Z" start="2026-11-07T06:33:21.9095124Z" finish="2026-11-07T06:33:22.2162599Z" />
+  <TestSettings name="default" id="5866b357-e632-4336-b37e-24540186a18d">
+    <Deployment runDeploymentRoot="satya_LAPTOP-VHJT9OJ5_2026-11-07_06_33_22.2114964" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="60296beb-84ba-40bb-acbf-921f299f8d1e" testId="397c16dd-ff20-06bd-6a46-599f9e9f2ee4" testName="Payment.Application.Tests.PaymentServiceTests.Refund_TwiceReturnsSuccess_AndRefundsOnlyOnce" computerName="LAPTOP-VHJT9OJ5" duration="00:00:00.0200000" startTime="2026-11-07T06:33:22.1134353+00:00" endTime="2026-11-07T06:33:22.1439364+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="60296beb-84ba-40bb-acbf-921f299f8d1e" />
+    <UnitTestResult executionId="8c96c8f6-a15b-4e25-a631-455017443a2b" testId="6b16b834-e66b-f6bd-8b60-f8018986dc3d" testName="Payment.Application.Tests.PaymentServiceTests.Charge_Success_SavesOnce" computerName="LAPTOP-VHJT9OJ5" duration="00:00:00.0030000" startTime="2026-11-07T06:33:22.1502922+00:00" endTime="2026-11-07T06:33:22.1536005+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="8c96c8f6-a15b-4e25-a631-455017443a2b" />
+    <UnitTestResult executionId="9fc2f468-8709-4611-9c8c-6a4031e9cf63" testId="c002a84a-0a51-1c7a-8b38-10a4da56394f" testName="Payment.Application.Tests.PaymentServiceTests.Charge_Declined_ReturnsError_AndSavesNothing" computerName="LAPTOP-VHJT9OJ5" duration="00:00:00.0010000" startTime="2026-11-07T06:33:22.1538598+00:00" endTime="2026-11-07T06:33:22.1553805+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="9fc2f468-8709-4611-9c8c-6a4031e9cf63" />
+    <UnitTestResult executionId="7c9b3ba4-6625-4035-bf1e-715ada3cc24e" testId="05f55ea4-65f3-c795-8b7f-59c993c5bff4" testName="Payment.Application.Tests.PaymentServiceTests.Charge_SameOrderTwice_DoesNotChargeAgain" computerName="LAPTOP-VHJT9OJ5" duration="00:00:00.0000000" startTime="2026-11-07T06:33:22.1555986+00:00" endTime="2026-11-07T06:33:22.1561486+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="7c9b3ba4-6625-4035-bf1e-715ada3cc24e" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Payment.Application.Tests.PaymentServiceTests.Refund_TwiceReturnsSuccess_AndRefundsOnlyOnce" storage="c:\users\satya\source\sanghecom\tests\payment\payment.application.tests\bin\release\net10.0\payment.application.tests.dll" id="397c16dd-ff20-06bd-6a46-599f9e9f2ee4">
+      <Execution id="60296beb-84ba-40bb-acbf-921f299f8d1e" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\Payment\Payment.Application.Tests\bin\Release\net10.0\Payment.Application.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="Payment.Application.Tests.PaymentServiceTests" name="Refund_TwiceReturnsSuccess_AndRefundsOnlyOnce" />
+    </UnitTest>
+    <UnitTest name="Payment.Application.Tests.PaymentServiceTests.Charge_Success_SavesOnce" storage="c:\users\satya\source\sanghecom\tests\payment\payment.application.tests\bin\release\net10.0\payment.application.tests.dll" id="6b16b834-e66b-f6bd-8b60-f8018986dc3d">
+      <Execution id="8c96c8f6-a15b-4e25-a631-455017443a2b" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\Payment\Payment.Application.Tests\bin\Release\net10.0\Payment.Application.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="Payment.Application.Tests.PaymentServiceTests" name="Charge_Success_SavesOnce" />
+    </UnitTest>
+    <UnitTest name="Payment.Application.Tests.PaymentServiceTests.Charge_Declined_ReturnsError_AndSavesNothing" storage="c:\users\satya\source\sanghecom\tests\payment\payment.application.tests\bin\release\net10.0\payment.application.tests.dll" id="c002a84a-0a51-1c7a-8b38-10a4da56394f">
+      <Execution id="9fc2f468-8709-4611-9c8c-6a4031e9cf63" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\Payment\Payment.Application.Tests\bin\Release\net10.0\Payment.Application.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="Payment.Application.Tests.PaymentServiceTests" name="Charge_Declined_ReturnsError_AndSavesNothing" />
+    </UnitTest>
+    <UnitTest name="Payment.Application.Tests.PaymentServiceTests.Charge_SameOrderTwice_DoesNotChargeAgain" storage="c:\users\satya\source\sanghecom\tests\payment\payment.application.tests\bin\release\net10.0\payment.application.tests.dll" id="05f55ea4-65f3-c795-8b7f-59c993c5bff4">
+      <Execution id="7c9b3ba4-6625-4035-bf1e-715ada3cc24e" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\Payment\Payment.Application.Tests\bin\Release\net10.0\Payment.Application.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="Payment.Application.Tests.PaymentServiceTests" name="Charge_SameOrderTwice_DoesNotChargeAgain" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="397c16dd-ff20-06bd-6a46-599f9e9f2ee4" executionId="60296beb-84ba-40bb-acbf-921f299f8d1e" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestEntry testId="6b16b834-e66b-f6bd-8b60-f8018986dc3d" executionId="8c96c8f6-a15b-4e25-a631-455017443a2b" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestEntry testId="c002a84a-0a51-1c7a-8b38-10a4da56394f" executionId="9fc2f468-8709-4611-9c8c-6a4031e9cf63" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestEntry testId="05f55ea4-65f3-c795-8b7f-59c993c5bff4" executionId="7c9b3ba4-6625-4035-bf1e-715ada3cc24e" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="4" executed="4" passed="4" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+</TestRun>

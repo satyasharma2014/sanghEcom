@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="c99c80e0-971c-4cf8-b00d-19ec4bf03d52" name="satya@LAPTOP-VHJT9OJ5 2026-11-07 06:33:22.2292266" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-07T06:33:21.8902598Z" queuing="2026-11-07T06:33:21.8902598Z" start="2026-11-07T06:33:21.8902598Z" finish="2026-11-07T06:33:22.2299858Z" />
+  <TestSettings name="default" id="c9454ba1-6322-46e9-af85-8aa67016bce1">
+    <Deployment runDeploymentRoot="satya_LAPTOP-VHJT9OJ5_2026-11-07_06_33_22.2292266" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="464c5e05-2d8f-4738-b257-e4e5e9d325fe" testId="7a99928a-271f-953c-aa7a-657901681bfb" testName="Inventory.Application.Tests.InventoryServiceTests.Reserve_AllOrNothing_NoChangeWhenAnyItemShort" computerName="LAPTOP-VHJT9OJ5" duration="00:00:00.0240000" startTime="2026-11-07T06:33:22.1111887+00:00" endTime="2026-11-07T06:33:22.1477200+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="464c5e05-2d8f-4738-b257-e4e5e9d325fe" />
+    <UnitTestResult executionId="68bed69d-85d8-456b-9bbb-abfd8c650801" testId="42b1baa9-988f-83a1-0792-7b062d5bdfe0" testName="Inventory.Application.Tests.InventoryServiceTests.Release_RestoresStock_AndSecondReleaseDoesNotAddAgain" computerName="LAPTOP-VHJT9OJ5" duration="00:00:00.0080000" startTime="2026-11-07T06:33:22.1569461+00:00" endTime="2026-11-07T06:33:22.1662014+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="68bed69d-85d8-456b-9bbb-abfd8c650801" />
+    <UnitTestResult executionId="291e71ae-72a8-4bc9-84b4-ed0cb9aa9025" testId="ea691701-e01d-5338-33a3-3b5338d5e867" testName="Inventory.Application.Tests.InventoryServiceTests.Reserve_DecreasesStock" computerName="LAPTOP-VHJT9OJ5" duration="00:00:00.0010000" startTime="2026-11-07T06:33:22.1665013+00:00" endTime="2026-11-07T06:33:22.1677128+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="291e71ae-72a8-4bc9-84b4-ed0cb9aa9025" />
+    <UnitTestResult executionId="f2f10d72-0b63-49ec-824e-39ba95fb8527" testId="32abac9b-e39e-f2cf-3357-f2305434e8fb" testName="Inventory.Application.Tests.InventoryServiceTests.Reserve_SameOrderTwice_IsIdempotent" computerName="LAPTOP-VHJT9OJ5" duration="00:00:00.0000000" startTime="2026-11-07T06:33:22.1680569+00:00" endTime="2026-11-07T06:33:22.1688994+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="f2f10d72-0b63-49ec-824e-39ba95fb8527" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Inventory.Application.Tests.InventoryServiceTests.Reserve_AllOrNothing_NoChangeWhenAnyItemShort" storage="c:\users\satya\source\sanghecom\tests\inventory.application.tests\bin\release\net10.0\inventory.application.tests.dll" id="7a99928a-271f-953c-aa7a-657901681bfb">
+      <Execution id="464c5e05-2d8f-4738-b257-e4e5e9d325fe" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\Inventory.Application.Tests\bin\Release\net10.0\Inventory.Application.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="Inventory.Application.Tests.InventoryServiceTests" name="Reserve_AllOrNothing_NoChangeWhenAnyItemShort" />
+    </UnitTest>
+    <UnitTest name="Inventory.Application.Tests.InventoryServiceTests.Release_RestoresStock_AndSecondReleaseDoesNotAddAgain" storage="c:\users\satya\source\sanghecom\tests\inventory.application.tests\bin\release\net10.0\inventory.application.tests.dll" id="42b1baa9-988f-83a1-0792-7b062d5bdfe0">
+      <Execution id="68bed69d-85d8-456b-9bbb-abfd8c650801" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\Inventory.Application.Tests\bin\Release\net10.0\Inventory.Application.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="Inventory.Application.Tests.InventoryServiceTests" name="Release_RestoresStock_AndSecondReleaseDoesNotAddAgain" />
+    </UnitTest>
+    <UnitTest name="Inventory.Application.Tests.InventoryServiceTests.Reserve_DecreasesStock" storage="c:\users\satya\source\sanghecom\tests\inventory.application.tests\bin\release\net10.0\inventory.application.tests.dll" id="ea691701-e01d-5338-33a3-3b5338d5e867">
+      <Execution id="291e71ae-72a8-4bc9-84b4-ed0cb9aa9025" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\Inventory.Application.Tests\bin\Release\net10.0\Inventory.Application.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="Inventory.Application.Tests.InventoryServiceTests" name="Reserve_DecreasesStock" />
+    </UnitTest>
+    <UnitTest name="Inventory.Application.Tests.InventoryServiceTests.Reserve_SameOrderTwice_IsIdempotent" storage="c:\users\satya\source\sanghecom\tests\inventory.application.tests\bin\release\net10.0\inventory.application.tests.dll" id="32abac9b-e39e-f2cf-3357-f2305434e8fb">
+      <Execution id="f2f10d72-0b63-49ec-824e-39ba95fb8527" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\Inventory.Application.Tests\bin\Release\net10.0\Inventory.Application.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="Inventory.Application.Tests.InventoryServiceTests" name="Reserve_SameOrderTwice_IsIdempotent" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="7a99928a-271f-953c-aa7a-657901681bfb" executionId="464c5e05-2d8f-4738-b257-e4e5e9d325fe" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestEntry testId="42b1baa9-988f-83a1-0792-7b062d5bdfe0" executionId="68bed69d-85d8-456b-9bbb-abfd8c650801" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestEntry testId="ea691701-e01d-5338-33a3-3b5338d5e867" executionId="291e71ae-72a8-4bc9-84b4-ed0cb9aa9025" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestEntry testId="32abac9b-e39e-f2cf-3357-f2305434e8fb" executionId="f2f10d72-0b63-49ec-824e-39ba95fb8527" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="4" executed="4" passed="4" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+</TestRun>

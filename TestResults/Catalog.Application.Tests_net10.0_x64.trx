@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="d4f8c788-6f18-41a8-9d44-08e8293743fc" name="satya@LAPTOP-VHJT9OJ5 2026-11-07 06:33:22.2545166" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-07T06:33:21.9543103Z" queuing="2026-11-07T06:33:21.9543103Z" start="2026-11-07T06:33:21.9543103Z" finish="2026-11-07T06:33:22.2550208Z" />
+  <TestSettings name="default" id="fe6fcfda-c15b-49d9-881e-e6934f50d723">
+    <Deployment runDeploymentRoot="satya_LAPTOP-VHJT9OJ5_2026-11-07_06_33_22.2545166" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="042ea066-476a-4962-99b8-55cd5c2ca8cd" testId="18611356-89a7-7ca4-6c65-bb1de1c5926f" testName="Catalog.Application.Tests.ProductServiceTests.Create_DuplicateSku_Fails" computerName="LAPTOP-VHJT9OJ5" duration="00:00:00.0230000" startTime="2026-11-07T06:33:22.1529191+00:00" endTime="2026-11-07T06:33:22.1897197+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="042ea066-476a-4962-99b8-55cd5c2ca8cd" />
+    <UnitTestResult executionId="aa4bcad1-7d73-4ebd-8150-88717545b4aa" testId="59090d6d-9380-71ba-6f80-329a49e3c26b" testName="Catalog.Application.Tests.ProductQueryServiceTests.NotFound_IsNotCached" computerName="LAPTOP-VHJT9OJ5" duration="00:00:00.0230000" startTime="2026-11-07T06:33:22.1529141+00:00" endTime="2026-11-07T06:33:22.1897327+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="aa4bcad1-7d73-4ebd-8150-88717545b4aa" />
+    <UnitTestResult executionId="da345d37-38c2-41f5-8e91-2ee8dcbcec2b" testId="378e094b-df11-c034-eaa3-9256f4213f1f" testName="Catalog.Application.Tests.ProductServiceTests.Create_ValidProduct_IsSaved_AndSkuIsUpperCase" computerName="LAPTOP-VHJT9OJ5" duration="00:00:00.0010000" startTime="2026-11-07T06:33:22.1951096+00:00" endTime="2026-11-07T06:33:22.1970053+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="da345d37-38c2-41f5-8e91-2ee8dcbcec2b" />
+    <UnitTestResult executionId="0a8dd213-d9e4-4b18-904f-70d22bd97369" testId="96f570e5-9b03-385e-b5a7-723c1650af13" testName="Catalog.Application.Tests.ProductServiceTests.Product_ZeroPrice_IsRejected" computerName="LAPTOP-VHJT9OJ5" duration="00:00:00.0000000" startTime="2026-11-07T06:33:22.1972029+00:00" endTime="2026-11-07T06:33:22.1975834+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="0a8dd213-d9e4-4b18-904f-70d22bd97369" />
+    <UnitTestResult executionId="bc06e50d-29b3-45f4-a15f-073875c37164" testId="2aa75ed0-33a3-16ee-2d51-6eae6a8011c9" testName="Catalog.Application.Tests.ProductServiceTests.GetBySku_Missing_ReturnsNotFound" computerName="LAPTOP-VHJT9OJ5" duration="00:00:00.0010000" startTime="2026-11-07T06:33:22.1978479+00:00" endTime="2026-11-07T06:33:22.1993299+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="bc06e50d-29b3-45f4-a15f-073875c37164" />
+    <UnitTestResult executionId="bb381c64-082b-4cde-84f1-cf6a3b516331" testId="7bddd881-0a4b-e25b-a177-f7b22e11aa8c" testName="Catalog.Application.Tests.ProductQueryServiceTests.SecondCall_IsServedFromCache" computerName="LAPTOP-VHJT9OJ5" duration="00:00:00.0080000" startTime="2026-11-07T06:33:22.1951323+00:00" endTime="2026-11-07T06:33:22.2038351+00:00" testType="13CDC9D9-DDB5-4fa4-A97D-D965CCFC6D4B" outcome="Passed" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" relativeResultsDirectory="bb381c64-082b-4cde-84f1-cf6a3b516331" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Catalog.Application.Tests.ProductServiceTests.Create_DuplicateSku_Fails" storage="c:\users\satya\source\sanghecom\tests\catalog\catalog.application.tests\bin\release\net10.0\catalog.application.tests.dll" id="18611356-89a7-7ca4-6c65-bb1de1c5926f">
+      <Execution id="042ea066-476a-4962-99b8-55cd5c2ca8cd" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\Catalog\Catalog.Application.Tests\bin\Release\net10.0\Catalog.Application.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="Catalog.Application.Tests.ProductServiceTests" name="Create_DuplicateSku_Fails" />
+    </UnitTest>
+    <UnitTest name="Catalog.Application.Tests.ProductQueryServiceTests.NotFound_IsNotCached" storage="c:\users\satya\source\sanghecom\tests\catalog\catalog.application.tests\bin\release\net10.0\catalog.application.tests.dll" id="59090d6d-9380-71ba-6f80-329a49e3c26b">
+      <Execution id="aa4bcad1-7d73-4ebd-8150-88717545b4aa" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\Catalog\Catalog.Application.Tests\bin\Release\net10.0\Catalog.Application.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="Catalog.Application.Tests.ProductQueryServiceTests" name="NotFound_IsNotCached" />
+    </UnitTest>
+    <UnitTest name="Catalog.Application.Tests.ProductServiceTests.Create_ValidProduct_IsSaved_AndSkuIsUpperCase" storage="c:\users\satya\source\sanghecom\tests\catalog\catalog.application.tests\bin\release\net10.0\catalog.application.tests.dll" id="378e094b-df11-c034-eaa3-9256f4213f1f">
+      <Execution id="da345d37-38c2-41f5-8e91-2ee8dcbcec2b" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\Catalog\Catalog.Application.Tests\bin\Release\net10.0\Catalog.Application.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="Catalog.Application.Tests.ProductServiceTests" name="Create_ValidProduct_IsSaved_AndSkuIsUpperCase" />
+    </UnitTest>
+    <UnitTest name="Catalog.Application.Tests.ProductServiceTests.Product_ZeroPrice_IsRejected" storage="c:\users\satya\source\sanghecom\tests\catalog\catalog.application.tests\bin\release\net10.0\catalog.application.tests.dll" id="96f570e5-9b03-385e-b5a7-723c1650af13">
+      <Execution id="0a8dd213-d9e4-4b18-904f-70d22bd97369" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\Catalog\Catalog.Application.Tests\bin\Release\net10.0\Catalog.Application.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="Catalog.Application.Tests.ProductServiceTests" name="Product_ZeroPrice_IsRejected" />
+    </UnitTest>
+    <UnitTest name="Catalog.Application.Tests.ProductServiceTests.GetBySku_Missing_ReturnsNotFound" storage="c:\users\satya\source\sanghecom\tests\catalog\catalog.application.tests\bin\release\net10.0\catalog.application.tests.dll" id="2aa75ed0-33a3-16ee-2d51-6eae6a8011c9">
+      <Execution id="bc06e50d-29b3-45f4-a15f-073875c37164" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\Catalog\Catalog.Application.Tests\bin\Release\net10.0\Catalog.Application.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="Catalog.Application.Tests.ProductServiceTests" name="GetBySku_Missing_ReturnsNotFound" />
+    </UnitTest>
+    <UnitTest name="Catalog.Application.Tests.ProductQueryServiceTests.SecondCall_IsServedFromCache" storage="c:\users\satya\source\sanghecom\tests\catalog\catalog.application.tests\bin\release\net10.0\catalog.application.tests.dll" id="7bddd881-0a4b-e25b-a177-f7b22e11aa8c">
+      <Execution id="bb381c64-082b-4cde-84f1-cf6a3b516331" />
+      <TestMethod codeBase="C:\Users\satya\source\SanghEcom\tests\Catalog\Catalog.Application.Tests\bin\Release\net10.0\Catalog.Application.Tests.dll" adapterTypeName="executor://30ea7c6e-dd24-4152-a360-1387158cd41d/4.0.2" className="Catalog.Application.Tests.ProductQueryServiceTests" name="SecondCall_IsServedFromCache" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="18611356-89a7-7ca4-6c65-bb1de1c5926f" executionId="042ea066-476a-4962-99b8-55cd5c2ca8cd" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestEntry testId="59090d6d-9380-71ba-6f80-329a49e3c26b" executionId="aa4bcad1-7d73-4ebd-8150-88717545b4aa" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestEntry testId="378e094b-df11-c034-eaa3-9256f4213f1f" executionId="da345d37-38c2-41f5-8e91-2ee8dcbcec2b" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestEntry testId="96f570e5-9b03-385e-b5a7-723c1650af13" executionId="0a8dd213-d9e4-4b18-904f-70d22bd97369" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestEntry testId="2aa75ed0-33a3-16ee-2d51-6eae6a8011c9" executionId="bc06e50d-29b3-45f4-a15f-073875c37164" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestEntry testId="7bddd881-0a4b-e25b-a177-f7b22e11aa8c" executionId="bb381c64-082b-4cde-84f1-cf6a3b516331" testListId="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8C84FA94-04C1-424b-9868-57A2D4851A1D" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="6" executed="6" passed="6" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+</TestRun>
