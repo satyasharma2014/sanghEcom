@@ -1,0 +1,219 @@
+# ============================================================================
+# docker-compose.yml  (DEV environment, poora system ek file mein)
+# Chalane ka tarika: docker compose up -d --build
+# ============================================================================
+
+# Project ka naam. Containers aur volumes ka prefix (sanghecom-catalog-api-1 etc.)
+name: sanghecom
+
+# ----------------------------------------------------------------------------
+# YAML ANCHORS: ek jagah likho, baar-baar use karo (DRY).
+# "x-" keys Compose ke liye koi service nahi, sirf templates hain.
+# ----------------------------------------------------------------------------
+
+# Sab containers ke liye common: restart policy aur log size limit
+x-defaults: &defaults
+  restart: unless-stopped            # crash ho to automatically restart (Docker restart hone par bhi)
+  logging:
+    driver: json-file
+    options:
+      max-size: "10m"                # ek log file 10 MB se badi nahi
+      max-file: "3"                  # 3 files tak rakhega (disk full se bachav)
+
+# Har API ka build block. Sirf "PROJECT" aur "ASSEMBLY" alag hote hain.
+x-service-build: &service-build
+  context: .                         # repo root
+  dockerfile: docker/Dockerfile      # shared Dockerfile
+
+# Har API ke liye common environment variables
+x-api-environment: &api-environment
+  ASPNETCORE_ENVIRONMENT: Development          # dev settings (detailed errors, OpenAPI)
+  # RabbitMQ: container ka naam "rabbitmq" (localhost nahi)
+  RabbitMq__Host: rabbitmq
+  RabbitMq__Port: "5672"
+  RabbitMq__UserName: ${RABBITMQ_USER}         # .env se
+  RabbitMq__Password: ${RABBITMQ_PASSWORD}     # .env se
+  RabbitMq__Exchange: sanghecom.events
+
+services:
+  # ==========================================================================
+  # INFRASTRUCTURE
+  # ==========================================================================
+
+  # ---- PostgreSQL: ek server, paanch databases (init script banati hai) ----
+  postgres:
+    <<: *defaults
+    image: postgres:16
+    environment:
+      POSTGRES_USER: ${POSTGRES_SUPERUSER}                   # superuser (admin)
+      POSTGRES_PASSWORD: ${POSTGRES_SUPERUSER_PASSWORD}
+      POSTGRES_DB: postgres                                  # default DB
+      # Init script ko service passwords chahiye (01-create-databases.sh)
+      CATALOG_DB_PASSWORD: ${CATALOG_DB_PASSWORD}
+      INVENTORY_DB_PASSWORD: ${INVENTORY_DB_PASSWORD}
+      PAYMENT_DB_PASSWORD: ${PAYMENT_DB_PASSWORD}
+      NOTIFICATION_DB_PASSWORD: ${NOTIFICATION_DB_PASSWORD}
+      ORDERS_DB_PASSWORD: ${ORDERS_DB_PASSWORD}
+    ports:
+      - "5432:5432"                                          # local tools (psql, VS) yahan se connect
+    volumes:
+      - postgres-data:/var/lib/postgresql/data               # data restart ke baad bhi bacha
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d:ro  # init scripts (sirf pehli baar chalti hain)
+    healthcheck:
+      # -h localhost: TCP par check. Init ke dauran Postgres sirf socket par hota hai,
+      # isliye ye tabhi "healthy" dega jab final server ready ho.
+      test: ["CMD-SHELL", "pg_isready -h localhost -U $$POSTGRES_USER -d postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  # ---- RabbitMQ: messaging (events) ----
+  rabbitmq:
+    <<: *defaults
+    image: rabbitmq:3-management                             # management UI wala image
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+    ports:
+      - "5672:5672"                                          # AMQP (apps ke liye)
+      - "15672:15672"                                        # UI: http://localhost:15672
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 20s
+
+  # ==========================================================================
+  # APPLICATION SERVICES
+  # ==========================================================================
+
+  catalog-api:
+    <<: *defaults
+    image: sanghecom/catalog-api:dev
+    build:
+      <<: *service-build
+      args:
+        PROJECT: src/Services/Catalog/Catalog.Api/Catalog.Api.csproj
+        ASSEMBLY: Catalog.Api
+    environment:
+      <<: *api-environment
+      # Connection string: "ConnectionStrings__CatalogDb" = appsettings "ConnectionStrings:CatalogDb"
+      ConnectionStrings__CatalogDb: Host=postgres;Port=5432;Database=catalog_db;Username=catalog;Password=${CATALOG_DB_PASSWORD}
+    ports:
+      - "5001:8080"                       # host:container (Dockerfile mein 8080)
+    depends_on:
+      postgres:
+        condition: service_healthy        # DB ready hone ke baad hi start
+
+  inventory-api:
+    <<: *defaults
+    image: sanghecom/inventory-api:dev
+    build:
+      <<: *service-build
+      args:
+        PROJECT: src/Services/Inventory/Inventory.Api/Inventory.Api.csproj
+        ASSEMBLY: Inventory.Api
+    environment:
+      <<: *api-environment
+      ConnectionStrings__InventoryDb: Host=postgres;Port=5432;Database=inventory_db;Username=inventory;Password=${INVENTORY_DB_PASSWORD}
+    ports:
+      - "5002:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  payment-api:
+    <<: *defaults
+    image: sanghecom/payment-api:dev
+    build:
+      <<: *service-build
+      args:
+        PROJECT: src/Services/Payment/Payment.Api/Payment.Api.csproj
+        ASSEMBLY: Payment.Api
+    environment:
+      <<: *api-environment
+      ConnectionStrings__PaymentDb: Host=postgres;Port=5432;Database=payment_db;Username=payment;Password=${PAYMENT_DB_PASSWORD}
+    ports:
+      - "5003:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  notification-api:
+    <<: *defaults
+    image: sanghecom/notification-api:dev
+    build:
+      <<: *service-build
+      args:
+        PROJECT: src/Services/Notification/Notification.Api/Notification.Api.csproj
+        ASSEMBLY: Notification.Api
+    environment:
+      <<: *api-environment
+      ConnectionStrings__NotificationDb: Host=postgres;Port=5432;Database=notification_db;Username=notification;Password=${NOTIFICATION_DB_PASSWORD}
+    ports:
+      - "5004:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy        # consumer RabbitMQ ke bina kaam nahi karega
+
+  orders-api:
+    <<: *defaults
+    image: sanghecom/orders-api:dev
+    build:
+      <<: *service-build
+      args:
+        PROJECT: src/Services/Orders/Orders.Api/Orders.Api.csproj
+        ASSEMBLY: Orders.Api
+    environment:
+      <<: *api-environment
+      ConnectionStrings__OrdersDb: Host=postgres;Port=5432;Database=orders_db;Username=orders;Password=${ORDERS_DB_PASSWORD}
+      # Service-to-service: container naam se (localhost nahi)
+      Services__Catalog: http://catalog-api:8080
+      Services__Inventory: http://inventory-api:8080
+      Services__Payment: http://payment-api:8080
+    ports:
+      - "5005:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      catalog-api:
+        condition: service_started        # API ka healthcheck nahi hai (aspnet image mein curl nahi)
+      inventory-api:
+        condition: service_started
+      payment-api:
+        condition: service_started
+
+  api-gateway:
+    <<: *defaults
+    image: sanghecom/api-gateway:dev
+    build:
+      <<: *service-build
+      args:
+        PROJECT: src/Gateway/ApiGateway/ApiGateway.csproj
+        ASSEMBLY: ApiGateway
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      # YARP destinations container naam se. Naam (catalog1, orders1) appsettings se match hona zaroori.
+      ReverseProxy__Clusters__catalog__Destinations__catalog1__Address: http://catalog-api:8080
+      ReverseProxy__Clusters__orders__Destinations__orders1__Address: http://orders-api:8080
+    ports:
+      - "5000:8080"                       # client ka single entry point
+    depends_on:
+      - catalog-api
+      - orders-api
+
+# ============================================================================
+# VOLUMES: named volumes. "docker compose down" se data bacha rehta hai.
+# "docker compose down -v" se data delete hota hai (fresh start).
+# ============================================================================
+volumes:
+  postgres-data:
+  rabbitmq-data:

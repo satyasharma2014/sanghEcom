@@ -1,10 +1,35 @@
+# Build output: image mein nahi jaana chahiye
 **/bin
 **/obj
+**/out
+
+# Visual Studio aur IDE files
 **/.vs
+**/.vscode
 **/*.user
-tests
+**/*.suo
+
+# Git aur CI files
 .git
 .github
+
+# Tests image mein zaroori nahi
+tests
+
+# Docs aur deploy files
 docs
 k8s
 infra
+ops
+scripts
+
+# Secrets: kabhi image mein na jayein
+**/appsettings.Development.json
+**/.env
+**/*.pfx
+.env.*
+!.env.example
+
+# Docker files khud (cache ke liye useful)
+**/Dockerfile
+docker-compose*.yml

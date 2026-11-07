@@ -81,10 +81,15 @@ builder.Services.AddHostedService<OutboxDispatcher<NotificationDbContext>>();
 builder.Services.AddHostedService<OrderPlacedNotificationConsumer>();
 
 var app = builder.Build();
-
+// DEV ONLY: pending migrations apply karo (tables bana/update karo).
+// Production mein migration alag job se chalegi, app start par nahi.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<NotificationDbContext>();
+    await db.Database.MigrateAsync();
+
 }
 
 app.MapControllers();

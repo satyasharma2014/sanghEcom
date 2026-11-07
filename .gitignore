@@ -8,3 +8,4 @@ tests
 docs
 k8s
 infra
+.env

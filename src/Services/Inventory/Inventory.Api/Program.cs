@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -24,6 +26,9 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
     app.UseSwagger();
     app.UseSwaggerUI();
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<InventoryDbContext>();
+    await db.Database.MigrateAsync();
 }
 
 app.UseHttpsRedirection();

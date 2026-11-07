@@ -1,4 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using Payment.Infrastructure;
+using Payment.Infrastructure.Persistence;
 using Swashbuckle.AspNetCore;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI;
@@ -20,6 +22,9 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
     app.UseSwagger();
     app.UseSwaggerUI();
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<PaymentDbContext>();
+    await db.Database.MigrateAsync();
 
 }
 

@@ -7,6 +7,8 @@
   <Folder Name="/Solution Items/">
     <File Path=".dockerignore" />
     <File Path=".editorconfig" />
+    <File Path=".env" />
+    <File Path=".env.example" />
     <File Path=".gitattributes" />
     <File Path=".gitignore" />
     <File Path="Directory.Build.props" />
@@ -15,15 +17,16 @@
     <File Path="README.md" />
   </Folder>
   <Folder Name="/src/" />
-  <Folder Name="/src/ApiGateway/">
-    <Project Path="src/ApiGateway/ApiGateway.csproj" Id="7c639424-455d-4655-b2e7-96598df0de0d" />
-  </Folder>
   <Folder Name="/src/BuildingBlocks/">
     <Project Path="src/BuildingBlocks/BuildingBlocks.Common/BuildingBlocks.Common.csproj" Id="ffda804b-4d26-4137-b155-a4b59a65aca2" />
     <Project Path="src/BuildingBlocks/BuildingBlocks.Contracts/BuildingBlocks.Contracts.csproj" Id="f8761a5a-a517-4b23-ab85-8a3f05612685" />
     <Project Path="src/BuildingBlocks/BuildingBlocks.Messaging/BuildingBlocks.Messaging.csproj" Id="ee2979ad-3509-4a0b-8813-c036fe4c46c5" />
     <Project Path="src/BuildingBlocks/BuildingBlocks.Outbox/BuildingBlocks.Outbox.csproj" Id="4d75dcd0-d0a6-4c7a-abf8-9ba2ca759c66" />
     <Project Path="src/BuildingBlocks/BuildingBlocks.Resilience/BuildingBlocks.Resilience.csproj" Id="d16731d0-a72e-4b01-b841-588e892f38e4" />
+  </Folder>
+  <Folder Name="/src/Gateway/" />
+  <Folder Name="/src/Gateway/ApiGateway/">
+    <Project Path="src/Gateway/ApiGateway/ApiGateway.csproj" />
   </Folder>
   <Folder Name="/src/Services/" />
   <Folder Name="/src/Services/Catalog/">
