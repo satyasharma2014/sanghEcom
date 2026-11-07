@@ -5,6 +5,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <OutputType>Exe</OutputType>
+    <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,10 +22,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\Services\Payment\Payment.Application\Payment.Application.csproj" />
     <ProjectReference Include="..\..\..\src\Services\Payment\Payment.Domain\Payment.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Using Include="Xunit.v3" />
-  </ItemGroup>
+  </ItemGroup> 
 
 </Project>

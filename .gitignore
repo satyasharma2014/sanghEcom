@@ -2,7 +2,6 @@
 **/obj
 **/.vs
 **/*.user
-tests
 .git
 .github
 docs

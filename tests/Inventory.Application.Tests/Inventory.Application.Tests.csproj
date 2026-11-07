@@ -5,6 +5,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <OutputType>Exe</OutputType>
+    <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,9 +23,6 @@
     <ProjectReference Include="..\..\src\Services\Inventory\Inventory.Application\Inventory.Application.csproj" />
     <ProjectReference Include="..\..\src\Services\Inventory\Inventory.Domain\Inventory.Domain.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Using Include="Xunit" />
-  </ItemGroup>
+  
 
 </Project>

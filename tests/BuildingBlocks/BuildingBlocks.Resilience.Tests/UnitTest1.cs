@@ -1,4 +1,6 @@
-﻿namespace BuildingBlocks.Resilience.Tests;
+using Xunit;
+
+namespace BuildingBlocks.Resilience.Tests;
 
 public class UnitTest1
 {
