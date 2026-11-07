@@ -118,9 +118,10 @@ jobs:
           cache-to: type=gha,mode=max,scope=${{ matrix.service }}
 
       - name: Trivy scan (HIGH/CRITICAL par fail)
-        uses: aquasecurity/trivy-action@v0.28.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
-          image-ref: sanghecom/${{ matrix.service }}:${{ github.sha }}
-          severity: CRITICAL,HIGH
+          image-ref: 'sanghecom/${{ matrix.service }}:${{ github.sha }}'
+          severity: 'CRITICAL,HIGH'
           ignore-unfixed: true
-          exit-code: "1"
+          exit-code: '1'
+
