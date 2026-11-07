@@ -1,0 +1,128 @@
+# ============================================================
+# CI pipeline: har push aur pull request par chalega
+# ============================================================
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# Least privilege: token sirf code padh sakta hai
+permissions:
+  contents: read
+
+# Naya push aaye to purana run cancel
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  DOTNET_NOLOGO: "1"
+  DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+
+jobs:
+  # ----------------------------------------------------------
+  # Job 1: build aur test
+  # ----------------------------------------------------------
+  build-and-test:
+    name: Build and test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # global.json ka SDK version install hoga
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Restore
+        run: dotnet restore SanghEcom.slnx
+
+      - name: Build (Release)
+        run: dotnet build SanghEcom.slnx --no-restore -c Release
+
+      - name: Test
+        run: >
+          dotnet test SanghEcom.slnx --no-build -c Release
+          --logger "trx;LogFileName=test-results.trx"
+          --results-directory ./TestResults
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: ./TestResults/**/*.trx
+          if-no-files-found: warn
+
+  # ----------------------------------------------------------
+  # Job 2: Docker images build aur Trivy scan (6 services)
+  # ----------------------------------------------------------
+  docker-images:
+    name: Image ${{ matrix.service }}
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - service: catalog-api
+            dockerfile: docker/Dockerfile
+            project: src/Services/Catalog/Catalog.Api/Catalog.Api.csproj
+            assembly: Catalog.Api
+          - service: inventory-api
+            dockerfile: docker/Dockerfile
+            project: src/Services/Inventory/Inventory.Api/Inventory.Api.csproj
+            assembly: Inventory.Api
+          - service: payment-api
+            dockerfile: docker/Dockerfile
+            project: src/Services/Payment/Payment.Api/Payment.Api.csproj
+            assembly: Payment.Api
+          - service: notification-api
+            dockerfile: docker/Dockerfile
+            project: src/Services/Notification/Notification.Api/Notification.Api.csproj
+            assembly: Notification.Api
+          - service: orders-api
+            dockerfile: docker/Dockerfile
+            project: src/Services/Orders/Orders.Api/Orders.Api.csproj
+            assembly: Orders.Api
+          - service: api-gateway
+            dockerfile: docker/Dockerfile
+            project: src/Gateway/ApiGateway/ApiGateway.csproj
+            assembly: ApiGateway
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ${{ matrix.dockerfile }}
+          build-args: |
+            PROJECT=${{ matrix.project }}
+            ASSEMBLY=${{ matrix.assembly }}
+          tags: sanghecom/${{ matrix.service }}:${{ github.sha }}
+          load: true
+          cache-from: type=gha,scope=${{ matrix.service }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.service }}
+
+      - name: Trivy scan (HIGH/CRITICAL par fail)
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: sanghecom/${{ matrix.service }}:${{ github.sha }}
+          severity: CRITICAL,HIGH
+          ignore-unfixed: true
+          exit-code: "1"
