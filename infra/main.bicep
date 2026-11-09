@@ -170,7 +170,7 @@ resource pgPasswordSecret 'Microsoft.KeyVault/vaults/secrets@2023-07-01' = {
 }
 
 // ----------------------------------------------------------------------------
-// Outputs: deploy ke baad ye values chahiye.
+// Outputs: deploy ke baad ye values chahiye
 // ----------------------------------------------------------------------------
 output aksName string = aks.name
 output postgresServerName string = pg.name
