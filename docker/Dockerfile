@@ -42,15 +42,10 @@ WORKDIR /app
 # (Trivy HIGH CVE-2026-109518 jaise fixed issues ke liye).
 # Ye root user se chalta hai, isliye USER root, phir wapas non-root.
 USER root
-RUN set -eux; \
-    for i in 1 2 3; do \
-      apt-get update && break; \
-      echo "apt-get update retry $i"; sleep 5; \
-    done; \
-    apt-get install -y --no-install-recommends libgssapi-krb5-2; \
-    apt-get upgrade -y --no-install-recommends; \
-    apt-get clean; \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends libgssapi-krb5-2 \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 
 ARG ASSEMBLY
 ENV APP_DLL=${ASSEMBLY}.dll

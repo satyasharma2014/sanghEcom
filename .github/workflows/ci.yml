@@ -108,7 +108,8 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ${{ matrix.dockerfile }}
+          file: docker/Dockerfile
+          network: host            # build container ko runner ka DNS/network milega
           build-args: |
             PROJECT=${{ matrix.project }}
             ASSEMBLY=${{ matrix.assembly }}
@@ -182,6 +183,7 @@ jobs:
         with:
           context: .
           file: docker/Dockerfile
+          network: host
           build-args: |
             PROJECT=${{ matrix.project }}
             ASSEMBLY=${{ matrix.assembly }}
