@@ -6,7 +6,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using Microsoft.EntityFrameworkCore;
 using Catalog.Infrastructure.Persistence;
-
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,5 +46,15 @@ app.UseHttpsRedirection();
 //app.UseAuthorization();
 
 app.MapControllers();
+
+// Migration-only mode: Kubernetes migration Job RUN_MIGRATIONS=true set karke chalati hai.
+// Migration ke baad app start nahi hota (background workers bhi nahi chalte).
+if (Environment.GetEnvironmentVariable("RUN_MIGRATIONS") == "true")
+{
+    using var migrationScope = app.Services.CreateScope();
+    await migrationScope.ServiceProvider.GetRequiredService<CatalogDbContext>().Database.MigrateAsync();
+    return;
+}
+
 
 app.Run();

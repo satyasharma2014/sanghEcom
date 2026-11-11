@@ -62,6 +62,7 @@
 ///
 using BuildingBlocks.Messaging;
 using BuildingBlocks.Outbox;
+using Microsoft.EntityFrameworkCore;
 using Orders.Application.Orders;
 using Orders.Infrastructure;
 using Orders.Infrastructure.Persistence;
@@ -93,5 +94,12 @@ if (app.Environment.IsDevelopment())
 
 app.MapControllers();
 app.MapGet("/health", () => Results.Ok(new { status = "Healthy", service = "orders-api" }));
-
+// Migration-only mode: Kubernetes migration Job RUN_MIGRATIONS=true set karke chalati hai.
+// Migration ke baad app start nahi hota (background workers bhi nahi chalte).
+if (Environment.GetEnvironmentVariable("RUN_MIGRATIONS") == "true")
+{
+    using var migrationScope = app.Services.CreateScope();
+    await migrationScope.ServiceProvider.GetRequiredService<OrdersDbContext>().Database.MigrateAsync();
+    return;
+}
 app.Run();

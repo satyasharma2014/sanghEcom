@@ -37,4 +37,13 @@ app.UseHttpsRedirection();
 
 app.MapControllers();
 
+// Migration-only mode: Kubernetes migration Job RUN_MIGRATIONS=true set karke chalati hai.
+// Migration ke baad app start nahi hota (background workers bhi nahi chalte).
+if (Environment.GetEnvironmentVariable("RUN_MIGRATIONS") == "true")
+{
+    using var migrationScope = app.Services.CreateScope();
+    await migrationScope.ServiceProvider.GetRequiredService<InventoryDbContext>().Database.MigrateAsync();
+    return;
+}
+
 app.Run();

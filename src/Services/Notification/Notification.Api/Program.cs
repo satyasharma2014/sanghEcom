@@ -144,4 +144,13 @@ app.MapGet("/dev/notifications", async (NotificationDbContext db, CancellationTo
     return Results.Ok(rows);
 }).WithTags("Dev");
 
+// Migration-only mode: Kubernetes migration Job RUN_MIGRATIONS=true set karke chalati hai.
+// Migration ke baad app start nahi hota (background workers bhi nahi chalte).
+if (Environment.GetEnvironmentVariable("RUN_MIGRATIONS") == "true")
+{
+    using var migrationScope = app.Services.CreateScope();
+    await migrationScope.ServiceProvider.GetRequiredService<NotificationDbContext>().Database.MigrateAsync();
+    return;
+}
+
 app.Run();
