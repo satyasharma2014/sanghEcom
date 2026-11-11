@@ -43,7 +43,7 @@ WORKDIR /app
 # Ye root user se chalta hai, isliye USER root, phir wapas non-root.
 USER root
 RUN apt-get update \
- && apt-get upgrade -y --no-install-recommends \
+ && apt-get install -y --no-install-recommends libgssapi-krb5-2 \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
