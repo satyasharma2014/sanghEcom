@@ -44,6 +44,7 @@ WORKDIR /app
 USER root
 RUN apt-get update \
  && apt-get install -y --no-install-recommends libgssapi-krb5-2 \
+ && apt-get upgrade -y --no-install-recommends \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
