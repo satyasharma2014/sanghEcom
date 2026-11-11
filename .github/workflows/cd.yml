@@ -1,0 +1,114 @@
+# ============================================================================
+# CD: CI green hone par (main branch) dev par deploy.
+# prod job environment approval ke baad chalta hai.
+# ============================================================================
+name: CD
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+    branches: [main]
+
+permissions:
+  contents: read
+  id-token: write          # OIDC login ke liye zaroori
+
+concurrency:
+  group: cd-deploy
+  cancel-in-progress: false  # deploy beech mein kabhi cancel na ho
+
+jobs:
+  deploy-dev:
+    name: Deploy to dev
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    environment: dev
+    steps:
+      - name: Checkout (CI jis commit par chali, wahi)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - name: Azure login (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: kubectl aur kubelogin install
+        run: |
+          az aks install-cli \
+            --kubectl-install-location "$HOME/.local/bin/kubectl" \
+            --kubelogin-install-location "$HOME/.local/bin/kubelogin"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: AKS credentials (Entra login)
+        run: |
+          az aks get-credentials -g ${{ vars.AKS_RG }} -n ${{ vars.AKS_NAME }} --overwrite-existing
+          kubelogin convert-kubeconfig -l azurecli
+
+      - name: Manifests apply (image tag = git SHA)
+        env:
+          SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          kubectl delete job -n sanghecom -l component=migration --ignore-not-found
+          sed "s/IMAGE_TAG/${SHA}/g" k8s/dev/manifests.yaml | kubectl apply -f -
+
+      - name: Migration Jobs complete hone ka wait
+        run: kubectl wait --for=condition=complete job -l component=migration -n sanghecom --timeout=300s
+
+      - name: Rollout wait
+        run: |
+          for d in $(kubectl get deploy -n sanghecom -o name); do
+            kubectl rollout status "$d" -n sanghecom --timeout=300s
+          done
+
+  deploy-prod:
+    name: Deploy to prod
+    needs: deploy-dev
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    environment: prod        # yahan manual approval lagega
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - name: Azure login (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: kubectl aur kubelogin install
+        run: |
+          az aks install-cli \
+            --kubectl-install-location "$HOME/.local/bin/kubectl" \
+            --kubelogin-install-location "$HOME/.local/bin/kubelogin"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: AKS credentials (Entra login)
+        run: |
+          az aks get-credentials -g ${{ vars.AKS_RG }} -n ${{ vars.AKS_NAME }} --overwrite-existing
+          kubelogin convert-kubeconfig -l azurecli
+
+      - name: Manifests apply (prod)
+        env:
+          SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          kubectl delete job -n sanghecom -l component=migration --ignore-not-found
+          sed "s/IMAGE_TAG/${SHA}/g" k8s/prod/manifests.yaml | kubectl apply -f -
+
+      - name: Migration Jobs wait
+        run: kubectl wait --for=condition=complete job -l component=migration -n sanghecom --timeout=300s
+
+      - name: Rollout wait
+        run: |
+          for d in $(kubectl get deploy -n sanghecom -o name); do
+            kubectl rollout status "$d" -n sanghecom --timeout=300s
+          done
