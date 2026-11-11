@@ -5,19 +5,29 @@
 SELECT format('CREATE ROLE %I LOGIN', 'catalog') WHERE NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'catalog')\gexec
 SELECT format('ALTER ROLE %I WITH LOGIN PASSWORD %L', 'catalog', :'catalog_pw')\gexec
 ALTER DATABASE catalog_db OWNER TO catalog;
+\c catalog_db
+GRANT ALL ON SCHEMA public TO catalog;
 
 SELECT format('CREATE ROLE %I LOGIN', 'inventory') WHERE NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'inventory')\gexec
 SELECT format('ALTER ROLE %I WITH LOGIN PASSWORD %L', 'inventory', :'inventory_pw')\gexec
 ALTER DATABASE inventory_db OWNER TO inventory;
+\c inventory_db
+GRANT ALL ON SCHEMA public TO inventory;
 
 SELECT format('CREATE ROLE %I LOGIN', 'payment') WHERE NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'payment')\gexec
 SELECT format('ALTER ROLE %I WITH LOGIN PASSWORD %L', 'payment', :'payment_pw')\gexec
 ALTER DATABASE payment_db OWNER TO payment;
+\c payment_db
+GRANT ALL ON SCHEMA public TO payment;
 
 SELECT format('CREATE ROLE %I LOGIN', 'notification') WHERE NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'notification')\gexec
 SELECT format('ALTER ROLE %I WITH LOGIN PASSWORD %L', 'notification', :'notification_pw')\gexec
 ALTER DATABASE notification_db OWNER TO notification;
+\c notification_db
+GRANT ALL ON SCHEMA public TO notification;
 
 SELECT format('CREATE ROLE %I LOGIN', 'orders') WHERE NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'orders')\gexec
 SELECT format('ALTER ROLE %I WITH LOGIN PASSWORD %L', 'orders', :'orders_pw')\gexec
 ALTER DATABASE orders_db OWNER TO orders;
+\c orders_db
+GRANT ALL ON SCHEMA public TO orders;
