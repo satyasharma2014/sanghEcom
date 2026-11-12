@@ -23,6 +23,9 @@ param nameSuffix string
 @description('ACR naam (sirf lowercase letters aur numbers). Step: az acr create')
 param acrName string
 
+@description('Resource group jahan ACR hai (shared ACR dev RG mein hai)')
+param acrResourceGroup string = 'rg-sanghecom-dev'
+
 @description('PostgreSQL admin username')
 param pgAdminLogin string = 'pgadmin'
 
@@ -67,6 +70,8 @@ var kvSecretsUserRoleId = '4633458b-17de-408a-b874-0445c86b69e6'
 // ----------------------------------------------------------------------------
 resource acr 'Microsoft.ContainerRegistry/registries@2023-07-01' existing = {
   name: acrName
+  scope: resourceGroup(acrResourceGroup)
+  
 }
 
 // ----------------------------------------------------------------------------
@@ -133,17 +138,25 @@ resource aks 'Microsoft.ContainerService/managedClusters@2024-05-01' = {
     }
   }
 }
-
-// AKS ka kubelet identity ACR se image pull kar sake
-resource kubeletAcrPull 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
-  name: guid(acr.id, aks.id, acrPullRoleId)
-  scope: acr
-  properties: {
-    roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', acrPullRoleId)
+module kubeletAcrPull 'modules/acr-pull.bicep' = {
+  name: 'acr-pull-kubelet'
+  scope: resourceGroup(acrResourceGroup)
+  params: {
+    acrName: acrName
     principalId: aks.properties.identityProfile.kubeletidentity.objectId
-    principalType: 'ServicePrincipal'
+    nameSeed: aks.id
   }
 }
+// // AKS ka kubelet identity ACR se image pull kar sake
+// resource kubeletAcrPull 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
+//   name: guid(acr.id, aks.id, acrPullRoleId)
+//   scope: acr
+//   properties: {
+//     roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', acrPullRoleId)
+//     principalId: aks.properties.identityProfile.kubeletidentity.objectId
+//     principalType: 'ServicePrincipal'
+//   }
+// }
 
 // ----------------------------------------------------------------------------
 // Federated credential: AKS ka "sanghecom-sa" service account is identity ko use kar sake
