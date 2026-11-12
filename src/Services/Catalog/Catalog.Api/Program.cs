@@ -25,7 +25,7 @@ builder.Services.AddCatalogInfrastructure(
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddMemoryCache();
 builder.Services.AddScoped<ProductQueryService>();
-
+builder.Services.AddHealthChecks();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -46,6 +46,11 @@ app.UseHttpsRedirection();
 //app.UseAuthorization();
 
 app.MapControllers();
+// Liveness: process zinda hai. Kubernetes isi se pod restart decide karta hai.
+app.MapGet("/health", () => Results.Ok(new { status = "Healthy" }));
+
+// Readiness: traffic lene layak hai ya nahi.
+app.MapHealthChecks("/health/ready");
 
 // Migration-only mode: Kubernetes migration Job RUN_MIGRATIONS=true set karke chalati hai.
 // Migration ke baad app start nahi hota (background workers bhi nahi chalte).

@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddPaymentInfrastructure(builder.Configuration.GetConnectionString("PaymentDb")!);
-
+builder.Services.AddHealthChecks();
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -30,6 +30,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.MapControllers();
+// Liveness: process zinda hai. Kubernetes isi se pod restart decide karta hai.
+app.MapGet("/health", () => Results.Ok(new { status = "Healthy" }));
+
+// Readiness: traffic lene layak hai ya nahi.
+app.MapHealthChecks("/health/ready");
 
 // Migration-only mode: Kubernetes migration Job RUN_MIGRATIONS=true set karke chalati hai.
 // Migration ke baad app start nahi hota (background workers bhi nahi chalte).
